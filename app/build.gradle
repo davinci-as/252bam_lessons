@@ -4,7 +4,7 @@ plugins {
 
 android {
     namespace 'ar.edu.davinci.a252b_am_lessons'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "ar.edu.davinci.a252b_am_lessons"
