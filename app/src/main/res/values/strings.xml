@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">25.2b-am_lessons</string>
+    <string name="welcome_message">Hello World!</string>
+    <string name="testing_log_message">Main Activity running</string>
 </resources>
