@@ -3,12 +3,12 @@ package ar.edu.davinci.a252b_am_lessons;
 import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,14 @@ public class MainActivity extends AppCompatActivity {
         Button button = new Button(this);
         button.setText(R.string.button_message);
         linearLayout.addView(button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button myButton = (Button) v;
+                myButton.setText("lo que quiera");
+                textView.setText("lo que quiera para el textview");
+            }
+        });
 
         setContentView(linearLayout);
     }
