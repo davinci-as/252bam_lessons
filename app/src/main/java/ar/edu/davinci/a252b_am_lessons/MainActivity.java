@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Button myButton = (Button) v;
                 Intent intent = new Intent(getApplicationContext(), ListViewActivity.class);
+                intent.putExtra("text", "lo que quiera");
                 startActivity(intent);
                 //myButton.setText("lo que quiera");
                 //textView.setText("lo que quiera para el textview");
