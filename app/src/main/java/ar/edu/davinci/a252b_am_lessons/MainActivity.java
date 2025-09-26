@@ -1,6 +1,8 @@
 package ar.edu.davinci.a252b_am_lessons;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.util.Log;
 import android.os.Bundle;
 import android.view.View;
@@ -28,8 +30,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Button myButton = (Button) v;
-                myButton.setText("lo que quiera");
-                textView.setText("lo que quiera para el textview");
+                Intent intent = new Intent(getApplicationContext(), ListViewActivity.class);
+                startActivity(intent);
+                //myButton.setText("lo que quiera");
+                //textView.setText("lo que quiera para el textview");
             }
         });
 
