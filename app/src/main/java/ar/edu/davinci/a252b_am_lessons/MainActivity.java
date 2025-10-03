@@ -1,5 +1,6 @@
 package ar.edu.davinci.a252b_am_lessons;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,6 +12,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                Log.i("result", "está llegando algo");
+                if(data == null) return;
+                if(!data.hasExtra("response")) return;
+                String response = data.getStringExtra("response");
+                Log.i("result", response);
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final int SAVE_DATA = 1;
