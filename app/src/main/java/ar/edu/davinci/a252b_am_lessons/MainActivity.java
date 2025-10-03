@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final int SAVE_DATA = 1;
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
         Log.d("testing-app", getString(R.string.testing_log_message));
@@ -32,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
                 Button myButton = (Button) v;
                 Intent intent = new Intent(getApplicationContext(), ListViewActivity.class);
                 intent.putExtra("text", "lo que quiera");
-                startActivity(intent);
+                //startActivity(intent);
+                startActivityForResult(intent, SAVE_DATA);
                 //myButton.setText("lo que quiera");
                 //textView.setText("lo que quiera para el textview");
             }
