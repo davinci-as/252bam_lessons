@@ -57,5 +57,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setContentView(linearLayout);
+
+        new ImageDownloader().execute("https://www.scripps.org/sparkle-assets/variants/hi_res_dogs_cats_rabbits_pets_1200x750-e017741227f7382c3ba7aaeb27b28297_desktop_x++-1200x1200.jpg");
     }
 }
