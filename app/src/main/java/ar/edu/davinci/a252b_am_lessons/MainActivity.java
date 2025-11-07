@@ -11,8 +11,12 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -29,6 +33,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user == null) {
+            //TODO: ir al activity de login
+            Log.i("firebase-auth", "No está autenticado todavía");
+        } else {
+            //TODO: tomar datos del usuario
+        }
+
         final int SAVE_DATA = 1;
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_main);
