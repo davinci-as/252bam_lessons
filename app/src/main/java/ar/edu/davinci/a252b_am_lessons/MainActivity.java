@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,15 +51,18 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else {
+            String id = user.getUid();
             db
                 .collection("users")
-                .whereEqualTo("uid", "bjU4SdKriDMXRMPuOwyhPPPYFjb2")
+                .whereEqualTo("uid", id)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         Log.i("firebase-firestore", "se completó la lectura");
                         if(task.isSuccessful()) {
+                            QuerySnapshot result = task.getResult();
+                            Object data = result.getDocuments().get(0).getData();
                             Log.i("firebase-firestore", "exitoso");
                         }
                     }
