@@ -38,8 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser user = mAuth.getCurrentUser();
         if(user == null) {
-            //TODO: ir al activity de login
-            Log.i("firebase-auth", "No está autenticado todavía");
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
         } else {
             //TODO: tomar datos del usuario
         }
