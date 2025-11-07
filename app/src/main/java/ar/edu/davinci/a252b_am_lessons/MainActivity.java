@@ -1,5 +1,6 @@
 package ar.edu.davinci.a252b_am_lessons;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,12 +12,19 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -35,12 +43,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         FirebaseUser user = mAuth.getCurrentUser();
         if(user == null) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         } else {
+            db
+                .collection("users")
+                .whereEqualTo("uid", "bjU4SdKriDMXRMPuOwyhPPPYFjb2")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        Log.i("firebase-firestore", "se completó la lectura");
+                        if(task.isSuccessful()) {
+                            Log.i("firebase-firestore", "exitoso");
+                        }
+                    }
+                });
             //TODO: tomar datos del usuario
         }
 
