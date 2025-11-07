@@ -28,11 +28,11 @@ public class LoginActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.i("firebase-auth", "login completado");
-                        Log.i("firebase-auth", email);
-                        Log.i("firebase-auth", password);
                         if(task.isSuccessful()) {
-                            //TODO: redireccionar a Main
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                        } else {
+                            //TODO: mostrar mensaje de error
                         }
                     }
                 });
